@@ -36,6 +36,21 @@ class MyLinkedListTest {
 				test.head.getNext().equals(secondElement) &&
 				test.tail.equals(thirdElement);				
 		assertEquals(true, result);
+	}		
+		@Test
+		void given3NumbersInsertBetweenTwoNumbers() {
+			MyNode<Integer> firstElement = new MyNode<>(56);
+			MyNode<Integer> secondElement = new MyNode<>(30);
+			MyNode<Integer> thirdElement = new MyNode<>(70);
+			MyLinkedList test = new MyLinkedList();
+			test.add(firstElement);
+			test.append(thirdElement);
+			test.insert(firstElement, secondElement);
+			//test.printMyNode();
+			boolean result = test.head.equals(firstElement) &&
+					test.head.getNext().equals(secondElement) &&
+					test.tail.equals(thirdElement);				
+			assertEquals(true, result);
 	}
 
 }
