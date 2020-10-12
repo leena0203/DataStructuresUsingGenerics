@@ -64,6 +64,19 @@ class MyLinkedListTest {
 		test.append(thirdElement);
 		assertEquals(firstElement, test.pop());
 	}
+	
+	@Test
+	void methodToPopAtLastNode() {
+		MyNode<Integer> firstElement = new MyNode<>(56);
+		MyNode<Integer> secondElement = new MyNode<>(30);
+		MyNode<Integer> thirdElement = new MyNode<>(70);
+		MyLinkedList test = new MyLinkedList();
+		test.add(firstElement);
+		test.append(secondElement);
+		test.append(thirdElement);
+		test.printMyNode();
+		assertEquals(thirdElement, test.popLast());
+	}
 }
 
 
