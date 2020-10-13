@@ -96,6 +96,17 @@ public class MyLinkedList<K> {
 		}
 		return tempNode;
 	}
+	
+	/**
+	 * Add between specific element(UC8)
+	 * @param key
+	 * @param newNode
+	 */
+	public void addInBetweenSearch(K key, INode newNode) {
+		INode tempINode = search(key);
+		newNode.setNext(tempINode.getNext());
+		tempINode.setNext(newNode);
+	}
 
 	/**
 	 * Print
