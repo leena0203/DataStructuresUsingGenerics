@@ -3,7 +3,7 @@ package com.MyNode;
 public class MyLinkedList<K> {
 	public INode head;
 	public INode tail;
-	
+
 	/**
 	 * Constructor
 	 */
@@ -96,7 +96,7 @@ public class MyLinkedList<K> {
 		}
 		return tempNode;
 	}
-	
+
 	/**
 	 * Add between specific element(UC8)
 	 * @param key
@@ -106,6 +106,49 @@ public class MyLinkedList<K> {
 		INode tempINode = search(key);
 		newNode.setNext(tempINode.getNext());
 		tempINode.setNext(newNode);
+	}
+
+	/**
+	 * Delete the specific key (UC9)
+	 * @param key
+	 * @return
+	 */
+	public int delete(K key) {
+		INode tempNode = head;
+		INode previous = head;
+		if (head.getKey().equals(key))
+			head = head.getNext();
+		else if (tail.getKey().equals(key)) {
+			popLast();
+		}
+		else {
+			while (tempNode != null && tempNode.getNext() != null) {
+				if(tempNode.getKey().equals(key))
+					break;
+				previous = tempNode;
+				tempNode = tempNode.getNext();
+			}
+			previous.setNext(tempNode.getNext());
+		}
+		return size();
+	}
+
+	/**
+	 * size of list (UC9)
+	 * @return
+	 */
+
+	public int size() {
+		int size = 0;
+		INode node = head;
+		while(node.getNext() != null) {
+			size++;
+			node = node.getNext();
+		}
+		if(node.equals(tail)) {
+			size++;
+		}
+		return size;
 	}
 
 	/**

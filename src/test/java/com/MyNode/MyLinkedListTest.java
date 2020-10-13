@@ -111,6 +111,23 @@ class MyLinkedListTest {
 				test.tail.equals(fourthElement);				
 		assertEquals(true, result);
 	}
+	
+	@Test
+	void methodToDeletANodeAndReturnCount() {
+		MyNode<Integer> firstElement = new MyNode<>(56);
+		MyNode<Integer> secondElement = new MyNode<>(30);
+		MyNode<Integer> thirdElement = new MyNode<>(40);
+		MyNode<Integer> fourthElement = new MyNode<>(70);
+		MyLinkedList test = new MyLinkedList();
+		test.add(firstElement);
+		test.append(secondElement);
+		test.append(fourthElement);
+		test.addInBetweenSearch(30, thirdElement);
+		test.printMyNode();
+		int size = test.delete(40);
+		test.printMyNode();
+		assertEquals(3,size);
+	}
 }
 
 
