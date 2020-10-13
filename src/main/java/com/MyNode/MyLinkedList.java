@@ -1,6 +1,6 @@
 package com.MyNode;
 
-public class MyLinkedList<K> {
+public class MyLinkedList<K extends Comparable<K>> {
 	public INode head;
 	public INode tail;
 
@@ -149,6 +149,31 @@ public class MyLinkedList<K> {
 			size++;
 		}
 		return size;
+	}
+	
+	public boolean orderedLinkedList(INode newNode) {
+		INode tempNode = head;
+		if (head == null) { // if linked list is empty then setting new node as head and tail
+			head = newNode;
+			tail = newNode;
+		} else if (((Comparable<K>) head.getKey()).compareTo((K) newNode.getKey()) > 0) { // if new node is less than head then setting new
+																	// node head
+			newNode.setNext(tempNode);
+			head = newNode;
+		} else if (((Comparable<K>) tail.getKey()).compareTo((K) newNode.getKey()) < 0) { // if new node is more than tail then setting new
+																	// node tail
+			tail.setNext(newNode);
+			tail = newNode;
+		} else {
+			INode previous = head;
+			while (tempNode.getNext() != null && ((Comparable<K>) tempNode.getKey()).compareTo((K) newNode.getKey()) < 0) {
+				previous = tempNode;
+				tempNode = tempNode.getNext();
+			}
+			newNode.setNext(previous.getNext());
+			previous.setNext(newNode);
+		}
+		return true;
 	}
 
 	/**
